@@ -69,15 +69,62 @@ print(str4.keys())
 # 打印值
 print(str4.values())
 
-if(12 and 12):
+if 12 and 12:
     print("ssssssssssssssssssssssssssssdddddssss")
 else:
     print("ddddddddddddddddddddddddccccccccc")
 aaa = 12
-while(aaa > 0):
+while aaa > 0:
     aaa += -1
     print(aaa)
     print("ssssssss:", aaa)
+
+# for循环练习
+for letter in "sssdddsss":
+    print("ssss:",letter)
+
+
+fruits = ['banana', 'apple',  'mango']
+for index in range(len(fruits)):
+   print('当前水果 :', fruits[index])
+
+# 函数练习
+var11 = min(12, 23, 5, 7)
+print('大龙奈斯:', var11)
+
+print('My name is %s and weight is %d kg!' % ('Zara', 21))
+
+hi = ''' hi   
+there
+ wdjwkd
+   dksckskcs
+    cmdscks
+毛孔 从'''
+print(hi)
+
+# 输出练习
+# strings = input('请输入：\n')
+# print('cscscscssc%s, %s, %d' %(strings, 'sssdddd', 123423))
+# print('cscscscssc:', strings)
+
+# 文件读取练习
+fopen = open('1.txt', 'w')
+print('sssssss文件名：', fopen.name)
+
+# 写入
+fopen.write('sssssss')
+
+# 读取文件
+fopen.read()
+
+fopen.close()
+
+# 查询是否已关闭输入流
+print(fopen.closed)
+
+
+
+
 
 
 
