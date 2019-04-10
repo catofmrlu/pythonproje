@@ -6,6 +6,7 @@ import re
 import threading
 import _thread
 import xml.sax
+import json
 
 # 语法练习
 print("hello world");
@@ -193,7 +194,6 @@ except:
 
 class TestHandler(xml.sax.ContentHandler):
     def __init__(self):
-        xml.sax.ContentHandler.__init__()
 
         self.CurrentData = ""
         self.type = ""
@@ -244,15 +244,55 @@ class TestHandler(xml.sax.ContentHandler):
 
 
 if (__name__ == "__main__"):
-    # 创建一个 XMLReader
-    parser = xml.sax.make_parser()
-    # 关闭命名空间
-    parser.setFeature(xml.sax.handler.feature_namespaces, 0)
+    try:
+        # 创建一个 XMLReader
+        parser = xml.sax.make_parser()
+        # 关闭命名空间
+        parser.setFeature(xml.sax.handler.feature_namespaces, 0)
 
-    # 重写 ContextHandler
-    Handler = TestHandler()
-    parser.setContentHandler(Handler)
+        # 重写 ContextHandler
+        Handler = TestHandler()
+        parser.setContentHandler(Handler)
 
-    parser.parse("movies.xml")
+        parser.parse("movies.xml")
+    except IOError:
+        print('解析xml出现IO异常！')
+    except:
+        print('其他异常！')
+    else:
+        print('解析成功！')
+
+
+# 解析json,json对象与python的字典相互转换
+
+# 封装json
+jsonTest = {'name': 'luxinxin',
+            'age': 25,
+            'university': 'JJU'}
+json_test = json.dumps(jsonTest)
+print('-----', jsonTest)
+print('---json--zd:', json_test)
+
+# 转换json为字典数据
+json_data = json.loads(json_test)
+
+print('---json:age:', json_data['age'])
+print('---json:name:', json_data['name'])
+print('---json:university:', json_data['university'])
+
+# 处理json文件
+# json_file = json.dump('test.json', 'r')
+# with open('test.json', 'r') as f:
+#     data = json.load(f)
+#
+# print(data)
+
+with open('data2.json', 'w') as f:
+    json.dump(json_data, f)
+
+with open('data2.json', 'r') as f:
+    data = json.load(f)
+
+print(data)
 
 
